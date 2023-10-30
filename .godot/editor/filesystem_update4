@@ -1,3 +1,4 @@
 res://Scenes/Bottle.tscn
 res://Shaders/Liquid.gdshader
+res://Shaders/LiquidSurface.gdshader
 res://Scripts/Bottle.gd

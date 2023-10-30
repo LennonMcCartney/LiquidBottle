@@ -1,14 +1,14 @@
 shader_type spatial;
-render_mode cull_disabled;
+render_mode cull_back;
 
-uniform float glass_thickness : hint_range(0.0f, 0.02f, 0.0001f);
+uniform float glass_thickness;// : hint_range(0.0f, 0.02f, 0.0001f);
 
-uniform vec3 liquid_colour : source_color;
+uniform vec3 liquid_colour;
 
 uniform float width;
 uniform float height;
 
-uniform float fill_amount : hint_range(-2, 2, 0.0001);
+uniform float fill_amount;// : hint_range(-2, 2, 0.0001);
 
 uniform float wave_intensity = 0.05f;
 
@@ -19,7 +19,7 @@ varying vec3 pos;
 void vertex() {
 	VERTEX -= glass_thickness * NORMAL;
 	
-	pos = mat3(MODEL_MATRIX)*VERTEX;
+	pos = mat3(MODEL_MATRIX) * VERTEX;
 }
 
 void fragment() {
