@@ -1,7 +1,7 @@
 2a60927148abd1d33b818b535e306557
-::res://::1698676761
+::res://::1698679554
 icon.svg::CompressedTexture2D::8849784226943279217::1698667660::1698667671::1::::<><>::
-::res://Models/::1698676779
+::res://Models/::1698676780
 castle.glb::PackedScene::537610576998778024::1698676768::1698676779::1::::<><>::uid://b8exbeephvaaj<>uid://dlsjwy54ublt5<>uid://cu36owtc2wi18<>uid://b5fujphjnjele<>uid://5kgfmwqa2yd1<>uid://ci2crex7ya68i<>uid://cfput1aqqj16j<>uid://cfi815ehgjwbv
 castle_0.png::CompressedTexture2D::4712308528356271745::1698676768::1698676780::1::::<><>::
 castle_1.png::CompressedTexture2D::7969085179320483896::1698676769::1698676780::1::::<><>::
@@ -20,7 +20,7 @@ castle_13.png::CompressedTexture2D::5142352281217830039::1698676775::1698676780:
 castle_14.png::CompressedTexture2D::7887036751521183529::1698676775::1698676776::1::::<><>::
 castle_15.png::CompressedTexture2D::6824153624754612763::1698676776::1698676776::1::::<><>::
 castle_16.png::CompressedTexture2D::3466609772091020882::1698676776::1698676776::1::::<><>::
-::res://Scenes/::1698676742
-Bottle.tscn::PackedScene::1768670949118521766::1698676742::0::1::::<><>::res://Shaders/Liquid.gdshader
-::res://Shaders/::1698676742
-Liquid.gdshader::Shader::-1::1698676742::0::1::::<><>::
+::res://Scenes/::1698676890
+Bottle.tscn::PackedScene::1768670949118521766::1698676890::0::1::::<><>::res://Shaders/Liquid.gdshader
+::res://Shaders/::1698676898
+Liquid.gdshader::Shader::-1::1698676898::0::1::::<><>::

@@ -8,9 +8,11 @@ uniform vec3 liquid_colour : source_color;
 uniform float width;
 uniform float height;
 
-varying float liquid_level;
-
 uniform float fill_amount : hint_range(-2, 2, 0.0001);
+
+uniform float wave_intensity = 0.05f;
+
+varying float liquid_level;
 
 varying vec3 pos;
 

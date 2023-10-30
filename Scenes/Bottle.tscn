@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://0g00tps7gmnm"]
+[gd_scene load_steps=7 format=3 uid="uid://0g00tps7gmnm"]
 
 [ext_resource type="Shader" path="res://Shaders/Liquid.gdshader" id="1_tvcnh"]
+[ext_resource type="Script" path="res://Scripts/Bottle.gd" id="2_tjlja"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxeoy"]
 render_priority = 0
@@ -9,7 +10,8 @@ shader_parameter/glass_thickness = 0.005
 shader_parameter/liquid_colour = Color(0.901961, 0.117647, 0.196078, 1)
 shader_parameter/width = 0.05
 shader_parameter/height = 0.3
-shader_parameter/fill_amount = -0.1643
+shader_parameter/fill_amount = -0.0723
+shader_parameter/wave_intensity = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7nbr"]
 next_pass = SubResource("ShaderMaterial_dxeoy")
@@ -28,8 +30,8 @@ radius = 0.05
 height = 0.3
 
 [node name="Bottle" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_cc77w")
+script = ExtResource("2_tjlja")
 
 [node name="RigidBody" type="RigidBody3D" parent="."]
 
