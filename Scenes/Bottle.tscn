@@ -1,28 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://0g00tps7gmnm"]
+[gd_scene load_steps=9 format=3 uid="uid://8a4jcbuchrp8"]
 
 [ext_resource type="Shader" path="res://Shaders/LiquidSurface.gdshader" id="1_coxk7"]
 [ext_resource type="Shader" path="res://Shaders/Liquid.gdshader" id="1_tvcnh"]
 [ext_resource type="Script" path="res://Scripts/Bottle.gd" id="2_tjlja"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_em2rp"]
+radius = 0.05
+height = 0.3
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kcn22"]
 render_priority = 1
 shader = ExtResource("1_coxk7")
-shader_parameter/glass_thickness = 0.005
+shader_parameter/glass_thickness = 0.01
 shader_parameter/surface_colour = Color(1, 0.0196078, 0.117647, 1)
 shader_parameter/width = 0.05
 shader_parameter/height = 0.3
-shader_parameter/fill_amount = -0.1241
+shader_parameter/fill_amount = 0.14
 shader_parameter/wave_intensity = 0.05
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxeoy"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_kcn22")
 shader = ExtResource("1_tvcnh")
-shader_parameter/glass_thickness = 0.005
+shader_parameter/glass_thickness = 0.01
 shader_parameter/liquid_colour = Color(0.901961, 0.117647, 0.196078, 1)
 shader_parameter/width = 0.05
 shader_parameter/height = 0.3
-shader_parameter/fill_amount = -0.1241
+shader_parameter/fill_amount = 0.14
 shader_parameter/wave_intensity = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7nbr"]
@@ -32,26 +36,26 @@ albedo_color = Color(0.588235, 0.588235, 0.588235, 0.294118)
 metallic = 1.0
 roughness = 0.2
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_cc77w"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rx6ky"]
 material = SubResource("StandardMaterial3D_o7nbr")
 radius = 0.05
 height = 0.3
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvygx"]
-radius = 0.05
-height = 0.3
-
-[node name="Bottle" type="MeshInstance3D"]
-mesh = SubResource("CapsuleMesh_cc77w")
+[node name="Bottle" type="Node3D"]
 script = ExtResource("2_tjlja")
 width = 0.05
 height = 0.3
-fill_amount = -0.1241
-glass_thickness = 0.005
+fill_amount = 0.14
+glass_thickness = 0.01
 liquid_colour = Color(0.901961, 0.117647, 0.196078, 1)
 surface_colour = Color(1, 0.0196078, 0.117647, 1)
 
 [node name="RigidBody" type="RigidBody3D" parent="."]
+mass = 0.1
 
 [node name="CollisionShape" type="CollisionShape3D" parent="RigidBody"]
-shape = SubResource("CapsuleShape3D_yvygx")
+shape = SubResource("CapsuleShape3D_em2rp")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="RigidBody/CollisionShape"]
+mesh = SubResource("CapsuleMesh_rx6ky")
+skeleton = NodePath("../../..")

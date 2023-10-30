@@ -1,4 +1,8 @@
+StaticBody3D
+MeshInstance3D
+DirectionalLight3D
+Camera3D
+WorldEnvironment
 CSGBox3D
 RigidBody3D
 CollisionShape3D
-MeshInstance3D

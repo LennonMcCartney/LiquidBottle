@@ -1,6 +1,8 @@
 2a60927148abd1d33b818b535e306557
-::res://::1698693515
+::res://::1698701602
 icon.svg::CompressedTexture2D::8849784226943279217::1698693476::1698693476::1::::<><>::
+::res://HDRIs/::1698701407
+kloofendal_48d_partly_cloudy_puresky_2k.hdr::CompressedTexture2D::211028741195687621::1698701371::1698701389::1::::<><>::
 ::res://Models/::1698693476
 castle.glb::PackedScene::537610576998778024::1698693476::1698693476::1::::<><>::
 castle_0.png::CompressedTexture2D::4712308528356271745::1698693476::1698693476::1::::<><>::
@@ -20,9 +22,11 @@ castle_13.png::CompressedTexture2D::5142352281217830039::1698693476::1698693476:
 castle_14.png::CompressedTexture2D::7887036751521183529::1698693476::1698693476::1::::<><>::
 castle_15.png::CompressedTexture2D::6824153624754612763::1698693476::1698693476::1::::<><>::
 castle_16.png::CompressedTexture2D::3466609772091020882::1698693476::1698693476::1::::<><>::
-::res://Scenes/::1698693476
-Bottle.tscn::PackedScene::1768670949118521766::1698693476::0::1::::<><>::res://Shaders/Liquid.gdshader<>res://Scripts/Bottle.gd
-::res://Scripts/::1698693476
-Bottle.gd::GDScript::-1::1698693476::0::1::::<>MeshInstance3D<>::
-::res://Shaders/::1698693476
-Liquid.gdshader::Shader::-1::1698693476::0::1::::<><>::
+::res://Scenes/::1698701759
+Bottle.tscn::PackedScene::1768670949118521766::1698701759::0::1::::<><>::res://Shaders/LiquidSurface.gdshader<>res://Shaders/Liquid.gdshader<>res://Scripts/Bottle.gd
+Room.tscn::PackedScene::3360288273128973105::1698701793::0::1::::<><>::uid://hwomranwqfau<>uid://dahu3ddwfg1r
+::res://Scripts/::1698701545
+Bottle.gd::GDScript::-1::1698701545::0::1::::<>MeshInstance3D<>::
+::res://Shaders/::1698696565
+Liquid.gdshader::Shader::-1::1698696565::0::1::::<><>::
+LiquidSurface.gdshader::Shader::-1::1698696565::0::1::::<><>::
