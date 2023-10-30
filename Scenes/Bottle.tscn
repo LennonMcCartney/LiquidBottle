@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://0g00tps7gmnm"]
+[gd_scene load_steps=6 format=3 uid="uid://0g00tps7gmnm"]
 
 [ext_resource type="Shader" path="res://Shaders/Liquid.gdshader" id="1_tvcnh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxeoy"]
 render_priority = 0
 shader = ExtResource("1_tvcnh")
-shader_parameter/glass_thickness = 0.007
+shader_parameter/glass_thickness = 0.005
 shader_parameter/liquid_colour = Color(0.901961, 0.117647, 0.196078, 1)
 shader_parameter/width = 0.05
 shader_parameter/height = 0.3
-shader_parameter/fill_amount = 0.2874
+shader_parameter/fill_amount = -0.1643
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7nbr"]
 next_pass = SubResource("ShaderMaterial_dxeoy")
@@ -23,5 +23,15 @@ material = SubResource("StandardMaterial3D_o7nbr")
 radius = 0.05
 height = 0.3
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvygx"]
+radius = 0.05
+height = 0.3
+
 [node name="Bottle" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_cc77w")
+
+[node name="RigidBody" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="RigidBody"]
+shape = SubResource("CapsuleShape3D_yvygx")
