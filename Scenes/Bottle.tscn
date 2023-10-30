@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://0g00tps7gmnm"]
+
+[ext_resource type="Shader" path="res://Shaders/Liquid.gdshader" id="1_tvcnh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxeoy"]
+render_priority = 0
+shader = ExtResource("1_tvcnh")
+shader_parameter/glass_thickness = 0.007
+shader_parameter/liquid_colour = Color(0.901961, 0.117647, 0.196078, 1)
+shader_parameter/width = 0.05
+shader_parameter/height = 0.3
+shader_parameter/fill_amount = 0.2874
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7nbr"]
+next_pass = SubResource("ShaderMaterial_dxeoy")
+transparency = 1
+albedo_color = Color(0.588235, 0.588235, 0.588235, 0.294118)
+metallic = 1.0
+roughness = 0.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cc77w"]
+material = SubResource("StandardMaterial3D_o7nbr")
+radius = 0.05
+height = 0.3
+
+[node name="Bottle" type="MeshInstance3D"]
+mesh = SubResource("CapsuleMesh_cc77w")
