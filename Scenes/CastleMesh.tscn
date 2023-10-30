@@ -43,7 +43,6 @@ data = PackedVector3Array(-14.8249, -23.7641, 16.3526, -15.6162, -1.9313, 15.777
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/bb74039016594466a6678eb6502183b2fbx/Object_2/RootNode/Box009/Object_5" index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/bb74039016594466a6678eb6502183b2fbx/Object_2/RootNode/Box009/Object_5/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_2ln78")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/bb74039016594466a6678eb6502183b2fbx/Object_2/RootNode/Box013" index="1"]
@@ -82,13 +81,11 @@ shape = SubResource("ConcavePolygonShape3D_hexqy")
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/bb74039016594466a6678eb6502183b2fbx/Object_2/RootNode/Box057/Object_108" index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/bb74039016594466a6678eb6502183b2fbx/Object_2/RootNode/Box057/Object_108/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_3n6y6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/bb74039016594466a6678eb6502183b2fbx/Object_2/RootNode/Box028" index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/bb74039016594466a6678eb6502183b2fbx/Object_2/RootNode/Box028/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_gc584")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/bb74039016594466a6678eb6502183b2fbx/Object_2/RootNode/Box029/Box029_Material #27_0" index="0"]

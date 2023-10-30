@@ -52,6 +52,7 @@ surface_colour = Color(1, 0.0196078, 0.117647, 1)
 
 [node name="RigidBody" type="RigidBody3D" parent="."]
 mass = 0.1
+continuous_cd = true
 
 [node name="CollisionShape" type="CollisionShape3D" parent="RigidBody"]
 shape = SubResource("CapsuleShape3D_em2rp")
