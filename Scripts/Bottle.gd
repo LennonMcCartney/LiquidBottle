@@ -20,6 +20,20 @@ extends Node3D
 var dragging : bool = false
 var mouse_relative : Vector2
 
+var coeff : Vector2
+var coeff_old : Vector2
+var coeff_old_old : Vector2
+
+var pos : Vector3 = rigid_body.position
+var pos_old : Vector3 = pos
+var pos_old_old : Vector3 = pos_old
+
+var accell : Vector2
+
+@export var dampening : float = 3.0
+@export var spring_constant : float = 200.0
+@export var reaction : float = 4.0
+
 func _process(_delta):
 	liquid_shader.set_shader_parameter("fill_amount", fill_amount)
 	surface_shader.set_shader_parameter("fill_amount", fill_amount)
@@ -42,6 +56,22 @@ func _physics_process(_delta):
 		var mouse_x : float = mouse_relative.x / 6.0
 		rigid_body.apply_central_force(Vector3(mouse_x, mouse_y, 0.0))
 		mouse_relative = Vector2(0.0,0.0)
+	
+	var accell_3d = (pos - 2 * pos_old + pos_old_old) / _delta / _delta
+	pos_old_old = pos_old
+	pos_old = pos
+	pos = rigid_body.position
+	
+	accell = Vector2(accell_3d.x, accell_3d.z)
+	
+	coeff_old_old = coeff_old
+	coeff_old = coeff
+	coeff = _delta * _delta * (-spring_constant*coeff_old - reaction*accell) + 2 * coeff_old - coeff_old_old - _delta * dampening * (coeff_old - coeff_old_old)
+	
+	liquid_shader.set_shader_parameter("coeff", coeff)
+	surface_shader.set_shader_parameter("coeff", coeff)
+	
+	liquid_shader.set_shader_parameter("velocity", (coeff - coeff_old) / _delta)
 
 func _input(event):
 	if (event.is_action_pressed("left_mouse_button")):

@@ -12,6 +12,11 @@ uniform float fill_amount;// : hint_range(-2, 2, 0.0001);
 
 uniform float wave_intensity = 0.05f;
 
+uniform sampler2D wave_noise;
+
+uniform vec2 coeff;
+uniform vec2 velocity;
+
 varying float liquid_level;
 
 varying vec3 pos;
@@ -27,6 +32,10 @@ void fragment() {
 	float m = mix(width, height, abs(d));
 	
 	liquid_level = (fill_amount) * m;
+	
+	liquid_level = (fill_amount) * m + wave_intensity * length(coeff) * (texture(wave_noise, 2.0*pos.xz + 0.5*TIME * vec2(1.0, 1.0)).r - 0.5f
+											  	      + texture(wave_noise, 2.0*pos.xz - 0.5*TIME * vec2(1.0, 1.0)).g - 0.5f)
+				  + dot(pos.xz, coeff);
 	
 	if (pos.y > liquid_level) {
 		discard;

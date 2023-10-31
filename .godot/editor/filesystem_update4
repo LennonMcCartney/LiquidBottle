@@ -1,3 +1,5 @@
 res://Scenes/Room.tscn
 res://Scenes/Bottle.tscn
 res://Scenes/CastleMesh.tscn
+res://Shaders/Liquid.gdshader
+res://Scripts/Bottle.gd
