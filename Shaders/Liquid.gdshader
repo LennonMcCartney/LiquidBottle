@@ -31,11 +31,11 @@ void fragment() {
 	float d = dot(vec3(MODEL_MATRIX[0][1], MODEL_MATRIX[1][1], MODEL_MATRIX[2][1]), vec3(0.0f, 1.0f, 0.0f));
 	float m = mix(width, height, abs(d));
 	
-	liquid_level = (fill_amount) * m;
+	//liquid_level = (fill_amount) * m;
 	
 	liquid_level = (fill_amount) * m + wave_intensity * length(coeff) * (texture(wave_noise, 2.0*pos.xz + 0.5*TIME * vec2(1.0, 1.0)).r - 0.5f
-											  	      + texture(wave_noise, 2.0*pos.xz - 0.5*TIME * vec2(1.0, 1.0)).g - 0.5f)
-				  + dot(pos.xz, coeff);
+										+ texture(wave_noise, 2.0*pos.xz - 0.5*TIME * vec2(1.0, 1.0)).g - 0.5f)
+										+ dot(pos.xz, coeff);
 	
 	if (pos.y > liquid_level) {
 		discard;

@@ -24,7 +24,7 @@ var coeff : Vector2
 var coeff_old : Vector2
 var coeff_old_old : Vector2
 
-@onready var pos : Vector3 = rigid_body.transform.origin
+@onready var pos : Vector3 = rigid_body.position
 @onready var pos_old : Vector3 = pos
 @onready var pos_old_old : Vector3 = pos_old
 
@@ -72,6 +72,10 @@ func _physics_process(_delta):
 	surface_shader.set_shader_parameter("coeff", coeff)
 	
 	liquid_shader.set_shader_parameter("velocity", (coeff - coeff_old) / _delta)
+	
+	#print("pos > ", pos)
+	#print("pos_old > ", pos_old)
+	#print("pos_old_old > ", pos_old_old)
 
 func _input(event):
 	if (event.is_action_pressed("left_mouse_button")):
