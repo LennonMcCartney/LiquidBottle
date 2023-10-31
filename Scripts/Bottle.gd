@@ -24,9 +24,9 @@ var coeff : Vector2
 var coeff_old : Vector2
 var coeff_old_old : Vector2
 
-var pos : Vector3 = rigid_body.position
-var pos_old : Vector3 = pos
-var pos_old_old : Vector3 = pos_old
+@onready var pos : Vector3 = rigid_body.transform.origin
+@onready var pos_old : Vector3 = pos
+@onready var pos_old_old : Vector3 = pos_old
 
 var accell : Vector2
 
