@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8a4jcbuchrp8"]
+[gd_scene load_steps=11 format=3 uid="uid://8a4jcbuchrp8"]
 
 [ext_resource type="Shader" path="res://Shaders/LiquidSurface.gdshader" id="1_coxk7"]
 [ext_resource type="Shader" path="res://Shaders/Liquid.gdshader" id="1_tvcnh"]
@@ -8,6 +8,12 @@
 radius = 0.05
 height = 0.3
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0u5wv"]
+frequency = 0.03
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lcjxb"]
+noise = SubResource("FastNoiseLite_0u5wv")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kcn22"]
 render_priority = 1
 shader = ExtResource("1_coxk7")
@@ -15,9 +21,10 @@ shader_parameter/glass_thickness = 0.01
 shader_parameter/surface_colour = Color(1, 0.0196078, 0.117647, 1)
 shader_parameter/width = 0.05
 shader_parameter/height = 0.3
-shader_parameter/fill_amount = 0.0
+shader_parameter/fill_amount = 0.0721
 shader_parameter/wave_intensity = 0.05
-shader_parameter/coeff = Vector2(-5.32493e-44, 1.54143e-44)
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/wave_noise = SubResource("NoiseTexture2D_lcjxb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxeoy"]
 render_priority = 0
@@ -27,10 +34,10 @@ shader_parameter/glass_thickness = 0.01
 shader_parameter/liquid_colour = Color(0.901961, 0.117647, 0.196078, 1)
 shader_parameter/width = 0.05
 shader_parameter/height = 0.3
-shader_parameter/fill_amount = 0.0
+shader_parameter/fill_amount = 0.0721
 shader_parameter/wave_intensity = 0.05
-shader_parameter/coeff = Vector2(-5.32493e-44, 1.54143e-44)
-shader_parameter/velocity = Vector2(0, 7.56701e-43)
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/velocity = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7nbr"]
 next_pass = SubResource("ShaderMaterial_dxeoy")
