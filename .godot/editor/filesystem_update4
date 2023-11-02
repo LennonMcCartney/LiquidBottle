@@ -1,2 +1,3 @@
-res://Scenes/Room.tscn
 res://Scenes/Bottle.tscn
+res://Shaders/LiquidSurface.gdshader
+res://Shaders/Liquid.gdshader
