@@ -65,7 +65,7 @@ func _physics_process(_delta):
 	
 	coeff_old_old = coeff_old
 	coeff_old = coeff
-	coeff = _delta * _delta * (-spring_constant*coeff_old - reaction*accell) + 2 * coeff_old - coeff_old_old - _delta * dampening * (coeff_old - coeff_old_old)
+	coeff = _delta * _delta * (-spring_constant * coeff_old - reaction * accell) + 2 * coeff_old - coeff_old_old - _delta * dampening * (coeff_old - coeff_old_old)
 	
 	liquid_shader.set_shader_parameter("coeff", coeff)
 	surface_shader.set_shader_parameter("coeff", coeff)

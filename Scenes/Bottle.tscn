@@ -15,9 +15,9 @@ shader_parameter/glass_thickness = 0.01
 shader_parameter/surface_colour = Color(1, 0.0196078, 0.117647, 1)
 shader_parameter/width = 0.05
 shader_parameter/height = 0.3
-shader_parameter/fill_amount = 0.0721
+shader_parameter/fill_amount = 0.0
 shader_parameter/wave_intensity = 0.05
-shader_parameter/coeff = Vector2(5.1237e-32, 0)
+shader_parameter/coeff = Vector2(-5.32493e-44, 1.54143e-44)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxeoy"]
 render_priority = 0
@@ -27,10 +27,10 @@ shader_parameter/glass_thickness = 0.01
 shader_parameter/liquid_colour = Color(0.901961, 0.117647, 0.196078, 1)
 shader_parameter/width = 0.05
 shader_parameter/height = 0.3
-shader_parameter/fill_amount = 0.0721
+shader_parameter/fill_amount = 0.0
 shader_parameter/wave_intensity = 0.05
-shader_parameter/coeff = Vector2(5.1237e-32, 0)
-shader_parameter/velocity = Vector2(-3.36486e-31, 0)
+shader_parameter/coeff = Vector2(-5.32493e-44, 1.54143e-44)
+shader_parameter/velocity = Vector2(0, 7.56701e-43)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7nbr"]
 next_pass = SubResource("ShaderMaterial_dxeoy")

@@ -1,14 +1,14 @@
 shader_type spatial;
 render_mode cull_front;
 
-uniform float glass_thickness;// : hint_range(0.0f, 0.02f, 0.0001f);
+uniform float glass_thickness;
 
 uniform vec3 surface_colour;
 
 uniform float width;
 uniform float height;
 
-uniform float fill_amount;// : hint_range(-2, 2, 0.0001);
+uniform float fill_amount;
 
 uniform float wave_intensity = 0.05f;
 
@@ -34,7 +34,7 @@ void fragment() {
 									+ texture(wave_noise, 2.0*pos.xz - 0.5*TIME * vec2(1.0, 1.0)).g - 0.5f)
 									+ dot(pos.xz, coeff);
 	
-	NORMAL = vec3(0.0f, 1.0f, 0.0f);
+	NORMAL = vec3(coeff.x, 1.0f, coeff.y);
 	
 	if (pos.y > liquid_level) {
 		discard;
