@@ -1,17 +1,14 @@
 @tool
-extends Node3D
-
-@onready var rigid_body : RigidBody3D = $RigidBody
-@onready var mesh_instance : MeshInstance3D = $RigidBody/CollisionShape/MeshInstance
+extends RigidBody3D
 
 var dragging : bool = false
 var mouse_relative : Vector2
 
 func _physics_process(_delta):
-	if (dragging and rigid_body.linear_velocity.length_squared() < 30.0):
+	if (dragging and linear_velocity.length_squared() < 30.0):
 		var mouse_y : float = -mouse_relative.y / 2.0
 		var mouse_x : float = mouse_relative.x / 6.0
-		rigid_body.apply_central_force(Vector3(mouse_x, mouse_y, 0.0))
+		apply_central_force(Vector3(mouse_x, mouse_y, 0.0))
 		mouse_relative = Vector2(0.0,0.0)
 
 func _input(event):
@@ -23,15 +20,15 @@ func _input(event):
 		var ray_to : Vector3 = ray_from + camera.project_ray_normal(mouse_pos) * 100000
 		var ray_query := PhysicsRayQueryParameters3D.create(ray_from, ray_to)
 		var result := space.intersect_ray(ray_query)
-		if (result and result.collider == rigid_body):
-			rigid_body.gravity_scale = 0
-			rigid_body.linear_damp = 10
-			rigid_body.angular_damp = 10
+		if (result and result.collider == self):
+			gravity_scale = 0
+			linear_damp = 10
+			angular_damp = 10
 			dragging = true
 	elif (event.is_action_released("left_mouse_button")):
-		rigid_body.gravity_scale = 1
-		rigid_body.linear_damp = 1
-		rigid_body.angular_damp = 1
+		gravity_scale = 1
+		linear_damp = 1
+		angular_damp = 1
 		dragging = false
 	if (dragging and event is InputEventMouseMotion):
 		mouse_relative = event.relative
