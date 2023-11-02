@@ -1,5 +1,5 @@
 @tool
-extends Node3D
+extends RigidBody3D
 
 @export var width : float
 @export var height : float
@@ -11,8 +11,7 @@ extends Node3D
 @export_color_no_alpha var liquid_colour : Color
 @export_color_no_alpha var surface_colour : Color
 
-@onready var rigid_body : RigidBody3D = $RigidBody
-@onready var mesh_instance : MeshInstance3D = $RigidBody/CollisionShape/MeshInstance
+@onready var mesh_instance : MeshInstance3D = $CollisionShape/MeshInstance
 
 @onready var liquid_shader : ShaderMaterial = mesh_instance.mesh.surface_get_material(0).next_pass as ShaderMaterial
 @onready var surface_shader : ShaderMaterial = liquid_shader.next_pass as ShaderMaterial
@@ -24,7 +23,7 @@ var coeff : Vector2
 var coeff_old : Vector2
 var coeff_old_old : Vector2
 
-@onready var pos : Vector3 = rigid_body.position
+@onready var pos : Vector3 = position
 @onready var pos_old : Vector3 = pos
 @onready var pos_old_old : Vector3 = pos_old
 
@@ -51,16 +50,16 @@ func _process(_delta):
 	surface_shader.set_shader_parameter("surface_colour", surface_colour)
 
 func _physics_process(_delta):
-	if (dragging and rigid_body.linear_velocity.length_squared() < 30.0):
+	if (dragging and linear_velocity.length_squared() < 30.0):
 		var mouse_y : float = -mouse_relative.y / 2.0
 		var mouse_x : float = mouse_relative.x / 6.0
-		rigid_body.apply_central_force(Vector3(mouse_x, mouse_y, 0.0))
+		apply_central_force(Vector3(mouse_x, mouse_y, 0.0))
 		mouse_relative = Vector2(0.0,0.0)
 	
 	var accell_3d = (pos - 2 * pos_old + pos_old_old) / _delta / _delta
 	pos_old_old = pos_old
 	pos_old = pos
-	pos = rigid_body.position
+	pos = position
 	
 	accell = Vector2(accell_3d.x, accell_3d.z)
 	
@@ -72,10 +71,6 @@ func _physics_process(_delta):
 	surface_shader.set_shader_parameter("coeff", coeff)
 	
 	liquid_shader.set_shader_parameter("velocity", (coeff - coeff_old) / _delta)
-	
-	#print("pos > ", pos)
-	#print("pos_old > ", pos_old)
-	#print("pos_old_old > ", pos_old_old)
 
 func _input(event):
 	if (event.is_action_pressed("left_mouse_button")):
@@ -86,15 +81,15 @@ func _input(event):
 		var ray_to : Vector3 = ray_from + camera.project_ray_normal(mouse_pos) * 100000
 		var ray_query := PhysicsRayQueryParameters3D.create(ray_from, ray_to)
 		var result := space.intersect_ray(ray_query)
-		if (result and result.collider == rigid_body):
-			rigid_body.gravity_scale = 0
-			rigid_body.linear_damp = 10
-			rigid_body.angular_damp = 10
+		if (result and result.collider == self):
+			gravity_scale = 0
+			linear_damp = 10
+			angular_damp = 10
 			dragging = true
 	elif (event.is_action_released("left_mouse_button")):
-		rigid_body.gravity_scale = 1
-		rigid_body.linear_damp = 1
-		rigid_body.angular_damp = 1
+		gravity_scale = 1
+		linear_damp = 1
+		angular_damp = 1
 		dragging = false
 	if (dragging and event is InputEventMouseMotion):
 		mouse_relative = event.relative

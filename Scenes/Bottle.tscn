@@ -17,7 +17,7 @@ shader_parameter/width = 0.05
 shader_parameter/height = 0.3
 shader_parameter/fill_amount = 0.0721
 shader_parameter/wave_intensity = 0.05
-shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/coeff = Vector2(5.1237e-32, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxeoy"]
 render_priority = 0
@@ -29,8 +29,8 @@ shader_parameter/width = 0.05
 shader_parameter/height = 0.3
 shader_parameter/fill_amount = 0.0721
 shader_parameter/wave_intensity = 0.05
-shader_parameter/coeff = Vector2(0, 0)
-shader_parameter/velocity = Vector2(0, 0)
+shader_parameter/coeff = Vector2(5.1237e-32, 0)
+shader_parameter/velocity = Vector2(-3.36486e-31, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7nbr"]
 next_pass = SubResource("ShaderMaterial_dxeoy")
@@ -44,7 +44,9 @@ material = SubResource("StandardMaterial3D_o7nbr")
 radius = 0.05
 height = 0.3
 
-[node name="Bottle" type="Node3D"]
+[node name="Bottle" type="RigidBody3D"]
+mass = 0.1
+continuous_cd = true
 script = ExtResource("2_tjlja")
 width = 0.05
 height = 0.3
@@ -52,13 +54,9 @@ glass_thickness = 0.01
 liquid_colour = Color(0.901961, 0.117647, 0.196078, 1)
 surface_colour = Color(1, 0.0196078, 0.117647, 1)
 
-[node name="RigidBody" type="RigidBody3D" parent="."]
-mass = 0.1
-continuous_cd = true
-
-[node name="CollisionShape" type="CollisionShape3D" parent="RigidBody"]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_em2rp")
 
-[node name="MeshInstance" type="MeshInstance3D" parent="RigidBody/CollisionShape"]
+[node name="MeshInstance" type="MeshInstance3D" parent="CollisionShape"]
 mesh = SubResource("CapsuleMesh_rx6ky")
 skeleton = NodePath("../../..")
